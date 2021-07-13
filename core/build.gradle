@@ -1,15 +1,15 @@
-plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
-}
+apply from: '../versions.gradle'
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
 
     defaultConfig {
-        minSdkVersion 23
-        targetSdkVersion 30
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
         versionCode 1
         versionName "1.0"
 
@@ -28,15 +28,30 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
 
 dependencies {
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation deps.kotlin.std_lib
+    implementation deps.androidx.appcompat
+    implementation deps.androidx.livedata
+    implementation deps.androidx.viewmodel
+    implementation deps.androidx.lifecycle_extensions
+    // network
+    implementation deps.networking.retrofit
+    implementation deps.networking.retrofit_gson
+    implementation deps.networking.retrofit_rx_adapter
+    implementation deps.networking.okhttp
+    implementation deps.networking.okhttp_interceptor
+    // dagger
+    implementation deps.dagger.core
+    implementation deps.dagger.android
+    kapt deps.dagger.compiler
+    kapt deps.dagger.annotation_processor
+    // rx
+    implementation deps.rx.android
+    implementation deps.rx.java
+    // testing
+    testImplementation deps.testing.junit
 }
