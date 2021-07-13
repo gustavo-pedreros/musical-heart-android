@@ -87,6 +87,8 @@ def lottie = [:]
 lottie.core = "com.airbnb.android:lottie:$versions.lottie"
 deps.lottie = lottie
 
+deps.gson = "com.google.code.gson:gson:2.8.6"
+
 ext.deps = deps
 
 static def addRepos(RepositoryHandler handler) {
