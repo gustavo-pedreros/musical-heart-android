@@ -1,2 +1,3 @@
 rootProject.name = "Musical Heart"
 include ':app'
+include ':core'
