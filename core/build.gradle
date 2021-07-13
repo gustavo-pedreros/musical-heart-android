@@ -1,7 +1,6 @@
 apply from: '../versions.gradle'
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion build_versions.target_sdk
@@ -44,11 +43,6 @@ dependencies {
     implementation deps.networking.retrofit_rx_adapter
     implementation deps.networking.okhttp
     implementation deps.networking.okhttp_interceptor
-    // dagger
-    implementation deps.dagger.core
-    implementation deps.dagger.android
-    kapt deps.dagger.compiler
-    kapt deps.dagger.annotation_processor
     // rx
     implementation deps.rx.android
     implementation deps.rx.java
