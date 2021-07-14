@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="horizontal_space_small">8dp</dimen>
+    <dimen name="horizontal_space">16dp</dimen>
+    <dimen name="vertical_space_standard">16dp</dimen>
+    <dimen name="vertical_space_small">8dp</dimen>
+</resources>
