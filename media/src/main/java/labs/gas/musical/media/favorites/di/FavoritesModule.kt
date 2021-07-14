@@ -15,7 +15,7 @@ import labs.gas.musical.media.favorites.domain.FavoriteListUseCase
 import labs.gas.musical.media.favorites.domain.FavoritesRepository
 import javax.inject.Singleton
 
-@Module
+@Module(includes = [FavoritesLocalSourceModule::class])
 class FavoritesModule {
     @Provides
     fun provideFavoritesRepository(favoritesLocalDatasource: FavoritesLocalDatasource): FavoritesRepository {
@@ -40,15 +40,12 @@ class FavoritesModule {
 
 @Module
 class FavoritesLocalSourceModule {
-    @Singleton
     @Provides
     fun provideFavoritesDatabase(context: Context) = FavoritesRoomDatabase.build(context)
 
-    @Singleton
     @Provides
     fun provideFavoritesDao(favoritesRoomDatabase: FavoritesRoomDatabase) = favoritesRoomDatabase.favoritesMediaDao()
 
-    @Singleton
     @Provides
     fun provideFavoritesLocalDatasource(favoritesMediaDao: FavoritesMediaDao): FavoritesLocalDatasource {
         return FavoritesRoomDatasource(favoritesMediaDao)
