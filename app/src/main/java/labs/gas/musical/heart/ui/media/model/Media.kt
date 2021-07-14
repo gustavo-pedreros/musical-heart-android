@@ -14,7 +14,7 @@ data class Media(
     var isFavorite: Boolean = false
 )
 
-fun MediaDomainModel.toPresentationModel() = Media(id, photo, name, album, artist, duration)
+fun MediaDomainModel.toPresentationModel() = Media(id, photo, name, album, artist, duration, isFavorite)
 
 fun Media.toDomainModel() = MediaDomainModel(id, photo, name, album, artist, duration, isFavorite)
 

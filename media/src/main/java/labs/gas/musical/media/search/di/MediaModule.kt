@@ -4,6 +4,8 @@ import dagger.Module
 import dagger.Provides
 import labs.gas.musical.core.networking.NetworkClient
 import labs.gas.musical.core.threads.Scheduler
+import labs.gas.musical.media.favorites.data.local.FavoritesLocalDatasource
+import labs.gas.musical.media.favorites.di.FavoritesLocalSourceModule
 import labs.gas.musical.media.search.data.MediaDataRepository
 import labs.gas.musical.media.search.data.remote.MediaRemoteDatasource
 import labs.gas.musical.media.search.data.remote.itunes.Constants.BASE_URL
@@ -12,13 +14,16 @@ import labs.gas.musical.media.search.data.remote.itunes.ItunesService
 import labs.gas.musical.media.search.domain.MediaRepository
 import labs.gas.musical.media.search.domain.SearchMediaUseCase
 
-@Module(includes = [ItunesNetworkClientModule::class])
+@Module(includes = [ItunesNetworkClientModule::class, FavoritesLocalSourceModule::class])
 class MediaModule {
     @Provides
     fun provideMediaRemoteDatasource(itunesService: ItunesService): MediaRemoteDatasource = ItunesDatasource(itunesService)
 
     @Provides
-    fun provideMediaRepository(remoteDatasource: MediaRemoteDatasource): MediaRepository = MediaDataRepository(remoteDatasource)
+    fun provideMediaRepository(
+        remoteDatasource: MediaRemoteDatasource,
+        favoritesLocalDatasource: FavoritesLocalDatasource
+    ): MediaRepository = MediaDataRepository(remoteDatasource, favoritesLocalDatasource)
 
     @Provides
     fun provideSearchMediaUseCase(mediaRepository: MediaRepository, scheduler: Scheduler) = SearchMediaUseCase(mediaRepository, scheduler)
