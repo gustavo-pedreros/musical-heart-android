@@ -4,6 +4,9 @@
 | -- | -- |
 | M. Fowler | “If you can get today’s work done today, but you do it in such a way that you can’t possibly get tomorrow’s work done tomorrow, then you lose.” |
 
+## Screenshots
+<img src="docs/01.jpg" width="200"> <img src="docs/02.jpg" width="200"> <img src="docs/03.jpg" width="200"> <img src="docs/04.jpg" width="200">
+
 ## Stack
 - Rx Android 3 / Rx Java 3
 - Dagger 2 (di layer)
