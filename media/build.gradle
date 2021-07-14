@@ -49,6 +49,10 @@ dependencies {
     implementation deps.dagger.android_support
     kapt deps.dagger.compiler
     kapt deps.dagger.annotation_processor
+    // room
+    implementation deps.room.core
+    implementation deps.room.rx
+    kapt deps.room.compiler
     // testing
     testImplementation deps.testing.junit
 }
