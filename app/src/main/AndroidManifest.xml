@@ -15,7 +15,7 @@
 
         <activity
             android:name=".ui.MusicalHeartActivity"
-            android:label="@string/app_name">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
