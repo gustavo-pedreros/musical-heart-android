@@ -10,6 +10,8 @@
 # Java class files
 *.class
 
+.DS_Store
+
 # Generated files
 bin/
 gen/
@@ -38,23 +40,21 @@ captures/
 
 # IntelliJ
 *.iml
+/.idea/workspace.xml
+/.idea/libraries
+/.idea/*
 .idea/workspace.xml
 .idea/tasks.xml
+.idea/dataSources/
+.idea/dataSources.ids
+.idea/dataSources.xml
+.idea/dataSources.local.xml
+.idea/sqlDataSources.xml
+.idea/dynamic.xml
+.idea/uiDesigner.xml
 .idea/gradle.xml
-.idea/assetWizardSettings.xml
-.idea/dictionaries
 .idea/libraries
-.idea/jarRepositories.xml
-# Android Studio 3 in .gitignore file.
-.idea/caches
-.idea/modules.xml
-# Comment next line if keeping position of elements in Navigation Editor is relevant for you
-.idea/navEditor.xml
-
-# Keystore files
-# Uncomment the following lines if you do not want to check your keystore files in.
-#*.jks
-#*.keystore
+.idea/mongoSettings.xml
 
 # External native build folder generated in Android Studio 2.2 and later
 .externalNativeBuild
