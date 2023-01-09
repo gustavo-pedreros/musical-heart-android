@@ -1,7 +1,7 @@
 ext.deps = [:]
 
 def versions = [:]
-versions.kotlin = "1.5.20"
+versions.kotlin = "1.7.20"
 versions.gradle = "4.2.2"
 versions.retrofit = "2.9.0"
 versions.retrofit_rx_adapter = "3.0.0"
@@ -12,13 +12,13 @@ versions.rx_android = "3.0.0"
 versions.timber = "4.7.1"
 versions.glide = "4.12.0"
 versions.lottie = "3.7.1"
-versions.room = "2.3.0"
+versions.room = "2.4.3"
 
 def deps = [:]
 
 def build_versions = [:]
 build_versions.min_sdk = 23
-build_versions.target_sdk = 30
+build_versions.target_sdk = 31
 build_versions.build_tools = "30.0.3"
 ext.build_versions = build_versions
 
