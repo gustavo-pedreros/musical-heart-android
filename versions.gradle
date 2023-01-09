@@ -68,6 +68,12 @@ dagger.android_support = "com.google.dagger:dagger-android-support:$versions.dag
 dagger.annotation_processor = "com.google.dagger:dagger-android-processor:$versions.dagger"
 deps.dagger = dagger
 
+def hilt = [:]
+hilt.plugin = "com.google.dagger:hilt-android-gradle-plugin:2.44"
+hilt.compiler = "com.google.dagger:hilt-compiler:2.44"
+hilt.core = "com.google.dagger:hilt-android:2.44"
+deps.hilt = hilt
+
 def rx = [:]
 rx.java = "io.reactivex.rxjava3:rxjava:$versions.rx_java"
 rx.android = "io.reactivex.rxjava3:rxandroid:$versions.rx_android"

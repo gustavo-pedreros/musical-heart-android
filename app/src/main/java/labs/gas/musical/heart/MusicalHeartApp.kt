@@ -9,7 +9,6 @@ import timber.log.Timber
 import timber.log.Timber.DebugTree
 import javax.inject.Inject
 
-
 class MusicalHeartApp : Application(), HasAndroidInjector {
     @Inject
     lateinit var injector: DispatchingAndroidInjector<Any>

@@ -2,6 +2,7 @@ apply from: '../versions.gradle'
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdk build_versions.target_sdk
@@ -58,6 +59,9 @@ dependencies {
     implementation deps.dagger.android_support
     kapt deps.dagger.compiler
     kapt deps.dagger.annotation_processor
+    // hilt
+    implementation deps.hilt.core
+    kapt deps.hilt.compiler
     // rx
     implementation deps.rx.android
     implementation deps.rx.java
