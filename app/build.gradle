@@ -4,13 +4,13 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion build_versions.target_sdk
+    compileSdk build_versions.target_sdk
     buildToolsVersion build_versions.build_tools
 
     defaultConfig {
         applicationId "labs.gas.musical.heart"
-        minSdkVersion build_versions.min_sdk
-        targetSdkVersion build_versions.target_sdk
+        minSdk build_versions.min_sdk
+        targetSdk build_versions.target_sdk
         versionCode 1
         versionName "1.0"
 
@@ -38,6 +38,8 @@ android {
 dependencies {
     implementation project(':core')
     implementation project(':media')
+    implementation project(':network')
+
     // kotlin & android
     implementation deps.kotlin.std_lib
     implementation deps.androidx.appcompat
