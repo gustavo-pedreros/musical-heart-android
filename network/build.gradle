@@ -40,5 +40,6 @@ dependencies {
     implementation deps.networking.okhttp_interceptor
     implementation deps.networking.retrofit
     implementation deps.networking.retrofit_gson
+    implementation deps.coroutines.android
     testImplementation deps.testing.junit
 }
