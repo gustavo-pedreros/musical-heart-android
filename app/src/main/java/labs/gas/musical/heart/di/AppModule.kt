@@ -4,11 +4,12 @@ import android.app.Application
 import android.content.Context
 import dagger.Module
 import dagger.Provides
-import javax.inject.Singleton
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 
 @Module
+@InstallIn(SingletonComponent::class)
 class AppModule {
     @Provides
-    @Singleton
     internal fun provideContext(application: Application): Context = application
 }

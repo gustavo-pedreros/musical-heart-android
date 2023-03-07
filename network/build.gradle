@@ -2,7 +2,6 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
 }
 apply from: '../versions.gradle'
 
@@ -45,9 +44,6 @@ dependencies {
     implementation deps.networking.retrofit_gson
     // coroutines
     implementation deps.coroutines.android
-    // hilt
-    implementation deps.hilt.core
-    kapt deps.hilt.compiler
     // testing
     testImplementation deps.testing.junit
 }

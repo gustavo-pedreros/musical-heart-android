@@ -2,6 +2,8 @@ package labs.gas.musical.media.search.di
 
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
 import labs.gas.musical.core.networking.NetworkClient
 import labs.gas.musical.core.threads.Scheduler
 import labs.gas.musical.media.favorites.data.local.FavoritesLocalDatasource
@@ -14,6 +16,7 @@ import labs.gas.musical.media.search.data.remote.itunes.ItunesService
 import labs.gas.musical.media.search.domain.MediaRepository
 import labs.gas.musical.media.search.domain.SearchMediaUseCase
 
+@InstallIn(ViewModelComponent::class)
 @Module(includes = [ItunesNetworkClientModule::class, FavoritesLocalSourceModule::class])
 class MediaModule {
     @Provides
@@ -29,6 +32,7 @@ class MediaModule {
     fun provideSearchMediaUseCase(mediaRepository: MediaRepository, scheduler: Scheduler) = SearchMediaUseCase(mediaRepository, scheduler)
 }
 
+@InstallIn(ViewModelComponent::class)
 @Module
 class ItunesNetworkClientModule {
     @Provides

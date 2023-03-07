@@ -11,7 +11,7 @@ abstract class RxViewModel : ViewModel() {
         clearCompositeDisposable()
     }
 
-    fun clearCompositeDisposable() {
+    private fun clearCompositeDisposable() {
         compositeDisposable.clear()
     }
 }

@@ -3,6 +3,8 @@ package labs.gas.musical.media.favorites.di
 import android.content.Context
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
 import labs.gas.musical.core.threads.Scheduler
 import labs.gas.musical.media.favorites.data.FavoritesDataRepository
 import labs.gas.musical.media.favorites.data.local.FavoritesLocalDatasource
@@ -13,8 +15,8 @@ import labs.gas.musical.media.favorites.domain.AddFavoriteUseCase
 import labs.gas.musical.media.favorites.domain.DeleteFavoriteUseCase
 import labs.gas.musical.media.favorites.domain.FavoriteListUseCase
 import labs.gas.musical.media.favorites.domain.FavoritesRepository
-import javax.inject.Singleton
 
+@InstallIn(ViewModelComponent::class)
 @Module(includes = [FavoritesLocalSourceModule::class])
 class FavoritesModule {
     @Provides
@@ -38,6 +40,7 @@ class FavoritesModule {
     }
 }
 
+@InstallIn(ViewModelComponent::class)
 @Module
 class FavoritesLocalSourceModule {
     @Provides

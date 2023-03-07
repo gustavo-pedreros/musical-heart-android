@@ -1,18 +1,22 @@
 package labs.gas.musical.heart.ui.favorites
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import labs.gas.musical.core.view.DataStatus
-import labs.gas.musical.core.view.RxViewModel
 import labs.gas.musical.media.favorites.domain.AddFavoriteUseCase
 import labs.gas.musical.media.favorites.domain.DeleteFavoriteUseCase
 import labs.gas.musical.media.favorites.domain.FavoriteListUseCase
 import labs.gas.musical.media.search.domain.model.MediaDomainModel
+import javax.inject.Inject
 
-class FavoritesViewModel(
+@HiltViewModel
+class FavoritesViewModel @Inject constructor(
     private val saveFavoriteUseCase: AddFavoriteUseCase,
     private val deleteFavoriteUseCase: DeleteFavoriteUseCase,
     private val favoriteListUseCase: FavoriteListUseCase
-) : RxViewModel() {
+) : ViewModel() {
     val saveFavoriteDataStatus: MutableLiveData<DataStatus> = MutableLiveData()
     val deleteFavoriteDataStatus: MutableLiveData<DataStatus> = MutableLiveData()
     val favoriteListDataStatus: MutableLiveData<DataStatus> = MutableLiveData()
@@ -48,5 +52,16 @@ class FavoritesViewModel(
             { favoriteListDataStatus.value = DataStatus.Error(it) }
         )
         compositeDisposable.add(disposable)
+    }
+
+    private val compositeDisposable by lazy { CompositeDisposable() }
+
+    override fun onCleared() {
+        super.onCleared()
+        clearCompositeDisposable()
+    }
+
+    private fun clearCompositeDisposable() {
+        compositeDisposable.clear()
     }
 }

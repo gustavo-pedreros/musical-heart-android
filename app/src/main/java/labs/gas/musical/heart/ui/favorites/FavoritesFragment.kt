@@ -1,16 +1,16 @@
 package labs.gas.musical.heart.ui.favorites
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
-import dagger.android.support.AndroidSupportInjection
+import dagger.hilt.android.AndroidEntryPoint
 import labs.gas.musical.core.extensions.gone
 import labs.gas.musical.core.extensions.liveDataObserve
 import labs.gas.musical.core.extensions.visible
@@ -19,23 +19,17 @@ import labs.gas.musical.heart.databinding.FragmentFavoritesBinding
 import labs.gas.musical.heart.ui.favorites.adapter.FavoriteAdapter
 import labs.gas.musical.media.search.domain.model.MediaDomainModel
 import timber.log.Timber
-import javax.inject.Inject
 
 private const val SPAN_COUNT = 2
 
+@AndroidEntryPoint
 class FavoritesFragment : Fragment() {
-    @Inject
-    lateinit var favoritesViewModel: FavoritesViewModel
+    private val favoritesViewModel: FavoritesViewModel by viewModels<FavoritesViewModel>()
     private lateinit var recyclerView: RecyclerView
     private lateinit var emptyView: LottieAnimationView
     private lateinit var emptyText: TextView
 
-    override fun onAttach(context: Context) {
-        AndroidSupportInjection.inject(this)
-        super.onAttach(context)
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val binding = FragmentFavoritesBinding.inflate(inflater, container, false)
         val root: View = binding.root
         recyclerView = binding.idRecyclerview

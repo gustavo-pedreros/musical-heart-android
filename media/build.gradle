@@ -30,11 +30,12 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+    namespace 'labs.gas.musical.media'
 }
 
 dependencies {
     implementation project(':core')
-    implementation deps.kotlin.std_lib
+    //implementation deps.kotlin.std_lib
     // network
     implementation deps.networking.retrofit
     implementation deps.networking.retrofit_gson
@@ -43,16 +44,18 @@ dependencies {
     // rx
     implementation deps.rx.java
     implementation deps.rx.android
-    // dagger
-    implementation deps.dagger.core
-    implementation deps.dagger.android
-    implementation deps.dagger.android_support
-    kapt deps.dagger.compiler
-    kapt deps.dagger.annotation_processor
+    // hilt
+    implementation deps.hilt.core
+    kapt deps.hilt.compiler
     // room
     implementation deps.room.core
+    implementation deps.room.runtime
     implementation deps.room.rx
     kapt deps.room.compiler
     // testing
     testImplementation deps.testing.junit
+
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
 }

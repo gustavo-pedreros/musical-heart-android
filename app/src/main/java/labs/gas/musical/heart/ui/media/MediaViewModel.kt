@@ -1,12 +1,16 @@
 package labs.gas.musical.heart.ui.media
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import labs.gas.musical.core.view.DataStatus
-import labs.gas.musical.core.view.RxViewModel
 import labs.gas.musical.media.search.domain.SearchMediaUseCase
 import timber.log.Timber
+import javax.inject.Inject
 
-class MediaViewModel(private val mediaUseCase: SearchMediaUseCase) : RxViewModel() {
+@HiltViewModel
+class MediaViewModel @Inject constructor(private val mediaUseCase: SearchMediaUseCase) : ViewModel() {
     val mediaDataStatus: MutableLiveData<DataStatus> = MutableLiveData()
 
     fun search(query: String) {
@@ -24,4 +28,15 @@ class MediaViewModel(private val mediaUseCase: SearchMediaUseCase) : RxViewModel
         compositeDisposable.add(disposable)
     }
 
+
+    protected val compositeDisposable by lazy { CompositeDisposable() }
+
+    override fun onCleared() {
+        super.onCleared()
+        clearCompositeDisposable()
+    }
+
+    private fun clearCompositeDisposable() {
+        compositeDisposable.clear()
+    }
 }

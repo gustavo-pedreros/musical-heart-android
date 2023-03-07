@@ -1,6 +1,6 @@
 package labs.gas.musical.heart.ui.media
 
-import android.content.Context
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,11 +8,12 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.textfield.TextInputEditText
-import dagger.android.support.AndroidSupportInjection
+import dagger.hilt.android.AndroidEntryPoint
 import labs.gas.musical.core.extensions.gone
 import labs.gas.musical.core.extensions.hideKeyboard
 import labs.gas.musical.core.extensions.liveDataObserve
@@ -25,14 +26,11 @@ import labs.gas.musical.heart.ui.media.model.toDomainModel
 import labs.gas.musical.heart.ui.media.model.toPresentationModel
 import labs.gas.musical.media.search.domain.model.MediaDomainModel
 import timber.log.Timber
-import javax.inject.Inject
 
+@AndroidEntryPoint
 class MediaFragment : Fragment() {
-    @Inject
-    lateinit var mediaViewModel: MediaViewModel
-
-    @Inject
-    lateinit var favoritesViewModel: FavoritesViewModel
+    val mediaViewModel: MediaViewModel by viewModels()
+    val favoritesViewModel: FavoritesViewModel by viewModels()
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var buttonSearch: ImageButton
@@ -40,12 +38,7 @@ class MediaFragment : Fragment() {
     private lateinit var loadingView: LottieAnimationView
     private lateinit var loadingText: TextView
 
-    override fun onAttach(context: Context) {
-        AndroidSupportInjection.inject(this)
-        super.onAttach(context)
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val binding = FragmentMediaBinding.inflate(inflater, container, false)
         val root: View = binding.root
         recyclerView = binding.idRecyclerview
@@ -100,6 +93,7 @@ class MediaFragment : Fragment() {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun handleAddFavoriteSuccess() {
         recyclerView.adapter?.notifyDataSetChanged()
     }
