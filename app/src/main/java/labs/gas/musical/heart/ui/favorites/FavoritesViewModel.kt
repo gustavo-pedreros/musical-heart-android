@@ -5,9 +5,9 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import labs.gas.musical.core.view.DataStatus
-import labs.gas.musical.media.favorites.domain.AddFavoriteUseCase
-import labs.gas.musical.media.favorites.domain.DeleteFavoriteUseCase
-import labs.gas.musical.media.favorites.domain.FavoriteListUseCase
+import labs.gas.musical.media.favorites.domain.usecase.AddFavoriteUseCase
+import labs.gas.musical.media.favorites.domain.usecase.DeleteFavoriteUseCase
+import labs.gas.musical.media.favorites.domain.usecase.FavoriteListUseCase
 import labs.gas.musical.media.search.domain.model.MediaDomainModel
 import javax.inject.Inject
 

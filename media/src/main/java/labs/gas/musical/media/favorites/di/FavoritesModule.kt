@@ -11,9 +11,9 @@ import labs.gas.musical.media.favorites.data.local.FavoritesLocalDatasource
 import labs.gas.musical.media.favorites.data.local.room.FavoritesMediaDao
 import labs.gas.musical.media.favorites.data.local.room.FavoritesRoomDatabase
 import labs.gas.musical.media.favorites.data.local.room.FavoritesRoomDatasource
-import labs.gas.musical.media.favorites.domain.AddFavoriteUseCase
-import labs.gas.musical.media.favorites.domain.DeleteFavoriteUseCase
-import labs.gas.musical.media.favorites.domain.FavoriteListUseCase
+import labs.gas.musical.media.favorites.domain.usecase.AddFavoriteUseCase
+import labs.gas.musical.media.favorites.domain.usecase.DeleteFavoriteUseCase
+import labs.gas.musical.media.favorites.domain.usecase.FavoriteListUseCase
 import labs.gas.musical.media.favorites.domain.FavoritesRepository
 
 @InstallIn(ViewModelComponent::class)

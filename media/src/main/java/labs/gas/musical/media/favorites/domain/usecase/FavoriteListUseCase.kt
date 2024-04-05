@@ -1,8 +1,9 @@
-package labs.gas.musical.media.favorites.domain
+package labs.gas.musical.media.favorites.domain.usecase
 
 import io.reactivex.rxjava3.core.Single
 import labs.gas.musical.core.threads.Scheduler
 import labs.gas.musical.core.threads.extensions.runOnIo
+import labs.gas.musical.media.favorites.domain.FavoritesRepository
 import labs.gas.musical.media.search.domain.model.MediaDomainModel
 import javax.inject.Inject
 
