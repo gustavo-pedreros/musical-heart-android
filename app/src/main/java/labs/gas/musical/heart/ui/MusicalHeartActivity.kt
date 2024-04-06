@@ -1,27 +1,21 @@
 package labs.gas.musical.heart.ui
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import dagger.android.AndroidInjection
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 import labs.gas.musical.heart.R
 import labs.gas.musical.heart.databinding.ActivityMusicalHeartBinding
-import javax.inject.Inject
 
-class MusicalHeartActivity : AppCompatActivity(), HasAndroidInjector {
-    @Inject
-    lateinit var injector: DispatchingAndroidInjector<Any>
+@AndroidEntryPoint
+class MusicalHeartActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMusicalHeartBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
 
         binding = ActivityMusicalHeartBinding.inflate(layoutInflater)
@@ -35,6 +29,4 @@ class MusicalHeartActivity : AppCompatActivity(), HasAndroidInjector {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
-
-    override fun androidInjector(): AndroidInjector<Any> = injector
 }

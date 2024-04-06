@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 apply from: '../versions.gradle'
 
@@ -36,10 +37,13 @@ android {
 
 dependencies {
     implementation deps.kotlin.std_lib
+    // networking
     implementation deps.networking.okhttp
     implementation deps.networking.okhttp_interceptor
     implementation deps.networking.retrofit
     implementation deps.networking.retrofit_gson
+    // coroutines
     implementation deps.coroutines.android
+    // testing
     testImplementation deps.testing.junit
 }
