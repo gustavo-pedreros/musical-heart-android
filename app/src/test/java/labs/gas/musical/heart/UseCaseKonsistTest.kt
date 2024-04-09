@@ -5,7 +5,6 @@ import com.lemonappdev.konsist.api.ext.list.withNameEndingWith
 import com.lemonappdev.konsist.api.verify.assertTrue
 import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.DynamicTest.dynamicTest
-import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestFactory
 import java.util.stream.Stream
 
@@ -24,34 +23,12 @@ class UseCaseKonsistTest {
             .stream()
             .flatMap { usecase ->
                 Stream.of(
-                    dynamicTest("usecaseShouldHaveTestTest") {
+                    dynamicTest("${usecase.name} should have unit test") {
                         usecase.assertTrue { it.hasTestClasses() }
                     },
-                    dynamicTest("usecaseShouldResideInDomainPackageTest") {
+                    dynamicTest("${usecase.name} should reside in domain package") {
                         usecase.assertTrue { it.resideInPackage("..domain..usecase..") }
                     }
                 )
             }
-
-    @Test
-    fun usecaseShouldHaveTestTest() {
-        Konsist
-            .scopeFromProject()
-            .classes()
-            .withNameEndingWith(USE_CASE_SUFFIX)
-            .assertTrue {
-                it.hasTestClasses()
-            }
-    }
-
-    @Test
-    fun usecaseShouldResideInDomainPackageTest() {
-        Konsist
-            .scopeFromProject()
-            .classes()
-            .withNameEndingWith(USE_CASE_SUFFIX)
-            .assertTrue {
-                it.resideInPackage("..domain..usecase..")
-            }
-    }
 }

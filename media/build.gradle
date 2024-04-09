@@ -35,7 +35,10 @@ android {
 
 dependencies {
     implementation project(':core')
-    //implementation deps.kotlin.std_lib
+
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
     // network
     implementation deps.networking.retrofit
     implementation deps.networking.retrofit_gson
@@ -52,10 +55,14 @@ dependencies {
     implementation deps.room.runtime
     implementation deps.room.rx
     kapt deps.room.compiler
-    // testing
-    testImplementation deps.testing.junit
 
-    implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+    // testing
+    testImplementation 'com.lemonappdev:konsist:0.15.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.7.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
